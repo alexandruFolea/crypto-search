@@ -1,0 +1,63 @@
+//pseudo ::before & ::after
+@mixin pseudo($display: block, $pos: absolute, $content: '') {
+	content: $content;
+	display: $display;
+	position: $pos;
+}
+//placeholder
+@mixin input-placeholder {
+	&.placeholder {
+		@content;
+	}
+	&:-moz-placeholder {
+		@content;
+	}
+	&::-moz-placeholder {
+		@content;
+	}
+	&:-ms-input-placeholder {
+		@content;
+	}
+	&::-webkit-input-placeholder {
+		@content;
+	}
+}
+//alignment
+@mixin align-center($vertical: true, $horizontal: false, $position: relative) {
+	@if $position {
+		position: $position;
+	}
+	@if $vertical {
+		top: 50%;
+	}
+	@if $horizontal {
+		left: 50%;
+	}
+
+	@if $vertical and $horizontal {
+		transform: translate(-50%, -50%);
+	} @else if $vertical {
+		transform: translateY(-50%);
+	} @else {
+		transform: translateX(-50%);
+	}
+}
+// background no repeat and center/cover
+@mixin bg-no-repeat {
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+// flex row/colum center
+@mixin flex-center-row() {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+@mixin flex-center-column() {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
